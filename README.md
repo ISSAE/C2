@@ -1,9 +1,11 @@
 # Valeur C2 AISL Cnam Liban
-Références et  travaux C2, informatique AISL au Cnam Liban
+
+Références et  travaux C2, informatique AISL au Cnam Liban. Intégration de système Autour de la plateforme java, Android, Servlerless commputing, cloud, DevOps et des produits open source pour l'environnement, le développement, la production et le déploiement
 
 ## Pré-requis: les thème de C1
 * Besoin, Analyse, Architecture, Concetion Arrighton
 * Architecture logiciel
+* TDD (TEst driven development) et Junit
 * Architecture à base de composants
 * Persistence, JPA, ORM
 * Web Services
@@ -35,4 +37,4 @@ Une idée de start-up : Besoin, Etude, analyse, conception, architecture, dével
 * Api google (Gsuite, Maps, etc..)
 * interfaces HTMLS, javascript, Mobile
 
-
+[Vers les supports et compléments](support)
