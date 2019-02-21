@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package dep4;
+=======
+package dep3;
+>>>>>>> c61e94f7264cba6a91121400daf52a1373c6f247
 
 
 /**

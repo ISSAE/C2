@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 package dep4;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+=======
+package dep3;
+>>>>>>> c61e94f7264cba6a91121400daf52a1373c6f247
 
 
 /**
@@ -14,6 +18,7 @@ import java.util.Properties;
  */
 public class Assembleur
 {
+<<<<<<< HEAD
     
 
     /**
@@ -49,4 +54,19 @@ public class Assembleur
     
     
 
+=======
+   
+
+    /**
+     * Constructeur d'objets de classe Assembleur
+     */
+    public Assembleur()
+    {
+       //
+    }
+
+    public static void assembler() {
+        A a = new A(new B());
+    }
+>>>>>>> c61e94f7264cba6a91121400daf52a1373c6f247
 }
