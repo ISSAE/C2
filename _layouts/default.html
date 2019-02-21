@@ -44,6 +44,11 @@
             <li><a class="buttons" href="/">
                 <small>Accueil</small>
               </a></li>
+              {% if page.link1 %}
+              <li><a class="buttons" href={{ site.link1 }}>
+                <small>{{ site.text1 | default: site.link1 </small>
+              </a></li>
+              {% endif %}
               <li><a class="buttons" href="http://java.cofares.net">
                 <small>Compléments Valeur C (GLG Java)</small>
               </a></li>
