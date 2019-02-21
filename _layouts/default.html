@@ -42,11 +42,11 @@
         <aside id="sidebar">
           <ul>
             <li><a class="buttons" href="/">
-                <small>Accueil</small>
+                <small>vers Accueil</small>
               </a></li>
             
-              <li><a class="buttons" href={{ site.link1 }}>
-                <small>{{ site.text1 | default: site.link1 }} </small>
+              <li>L1: <a class="buttons" href="/{{ site.link1 }}">
+                <small>{{ site.text1 | default: site.link1 }}</small>
               </a></li>
          
               {% if site.link2 %}
