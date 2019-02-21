@@ -45,20 +45,9 @@
                 <small>vers Accueil</small>
               </a></li>
             
-              <li>L1: <a class="buttons" href="/{{ site.link1 }}">
-                <small>{{ site.text1 | default: site.link1 }}</small>
+              <li><a class="buttons" href="/support">
+                <small>Supports et compléments</small>
               </a></li>
-         
-              {% if site.link2 %}
-              <li><a class="buttons" href={{ site.link1 }}>
-                <small>{{ site.text2 | default: site.link2 }} </small>
-              </a></li>
-              {% endif %}
-              {% if site.link3 %}
-              <li><a class="buttons" href={{ site.link1 }}>
-                <small>{{ site.text3 | default: site.link3 }} </small>
-              </a></li>
-              {% endif %}
               <li><a class="buttons" href="http://java.cofares.net">
                 <small>Compléments Valeur C (GLG Java)</small>
               </a></li>
