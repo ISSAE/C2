@@ -16,10 +16,7 @@ public class Assembleur
      */
     public Assembleur()
     {
-       //
-    }
-
-    public static void assembler() {
         A a = new A(new B());
     }
+
 }
