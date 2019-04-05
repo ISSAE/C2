@@ -38,3 +38,7 @@ Une idée de start-up : Besoin, Etude, analyse, conception, architecture, dével
 * interfaces HTMLS, javascript, Mobile
 
 [Vers les supports et compléments](support)
+
+[Maven et github](/C2/MavenEtGithub/index.md)
+
+[EDP1](/C2/EDP/edp1/index.md)

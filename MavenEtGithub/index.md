@@ -40,3 +40,86 @@ La manière habituelle de déployer des artefacts sur un dépôt Maven distant c
 </plugins>
 ```
 
+Maintenant, essayez d’exécuter `mvn clean deploy`. Vous verrez qu'il a déployé votre référentiel Maven pour cibler / mvn-repo. La prochaine étape consiste à le faire télécharger ce répertoire sur github.
+
+## Etape2: Ajoutez vos informations d’authentification à `~/.m2/settings.xml` afin que github site-maven-plugin puisse envoyer à github:
+
+```xml
+<!-- NOTE: MAKE SURE THAT settings.xml IS NOT WORLD READABLE! -->
+<settings>
+  <servers>
+    <server>
+      <id>github</id>
+      <username>YOUR-USERNAME</username>
+      <password>YOUR-PASSWORD</password>
+    </server>
+  </servers>
+</settings>
+```
+
+2. N'oublier pas d'utiliser vos talent de bon administrateur système pour protégé ce fichier contre les regards indiscret. par exemple `chmod 700 ~/.m2/settings.xml`
+3. Indiquez ensuite à github site-maven-plugin le nouveau serveur que vous venez de configurer en ajoutant ce qui suit à votre pom:
+
+```xml
+<properties>
+    <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+    <github.global.server>github</github.global.server>
+</properties>
+```
+
+## Etape3 : configurez le site-maven-plugin pour qu'il soit envoyé depuis votre référentiel intermédiaire temporaire (statging) vers votre branche mvn-repo sur github:
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>com.github.github</groupId>
+            <artifactId>site-maven-plugin</artifactId>
+            <version>0.9</version>
+            <configuration>
+                <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
+                <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name peut être master si vous souhaitez --> 
+                <includes><include>**/*</include></includes>
+                <merge>true</merge>                                        <!-- don't delete old artifacts -->
+                <repositoryName>YOUR-REPOSITORY-NAME</repositoryName>      <!-- github repo name -->
+                <repositoryOwner>YOUR-GITHUB-USERNAME</repositoryOwner>    <!-- github username  -->
+            </configuration>
+            <executions>
+              <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+              <execution>
+                <goals>
+                  <goal>site</goal>
+                </goals>
+                <phase>deploy</phase>
+              </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
+Maintenant, exécutez à nouveau `mvn clean deploy`. Vous devriez voir maven-deploy-plugin «télécharger» les fichiers dans votre référentiel de transfert local dans le répertoire cible, puis site-maven-plugin valider ces fichiers et les envoyer au serveur.
+
+## Voila!
+
+On peut maintenant déployer nos artefacts maven sur le dépôt public sans frais en exécutant simplement  `mvn clean deploy`
+
+# La question comment utiliser ce dépôts (qui n'est pas maven central) dans d'autre projet
+
+1. Vous créerér vos dépendence comme d'habitude dans maven
+2. Dire au pom au trouver les repository
+
+```xml
+<repositories>
+    <repository>
+        <id>YOUR-PROJECT-NAME-mvn-repo</id>
+        <url>https://raw.github.com/YOUR-USERNAME/YOUR-PROJECT-NAME/mvn-repo/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
+```
