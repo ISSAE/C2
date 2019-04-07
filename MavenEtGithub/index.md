@@ -108,14 +108,14 @@ On peut maintenant déployer nos artefacts maven sur le dépôt public sans frai
 
 # La question comment utiliser ce dépôts (qui n'est pas maven central) dans d'autre projet
 
-1. Vous créerér vos dépendence comme d'habitude dans maven
+1. Vous créer vos dépendances comme d'habitude dans maven
 2. Dire au pom au trouver les repository
 
 ```xml
 <repositories>
     <repository>
         <id>YOUR-PROJECT-NAME-mvn-repo</id>
-        <url>https://raw.github.com/YOUR-USERNAME/YOUR-PROJECT-NAME/mvn-repo/</url>
+        <url>https://github.com/userOuOrganisation/Nomrepo/tree/branch/path</url>
         <snapshots>
             <enabled>true</enabled>
             <updatePolicy>always</updatePolicy>

@@ -3,7 +3,7 @@
 Références et  travaux C2, informatique AISL au Cnam Liban. Intégration de système Autour de la plateforme java, Android, Servlerless commputing, cloud, DevOps et des produits open source pour l'environnement, le développement, la production et le déploiement
 
 ## Pré-requis: les thème de C1
-* Besoin, Analyse, Architecture, Concetion Arrighton
+* Besoin, Analyse, Architecture, Conception Arrighton
 * Architecture logiciel
 * TDD (TEst driven development) et Junit
 * Architecture à base de composants
@@ -39,6 +39,8 @@ Une idée de start-up : Besoin, Etude, analyse, conception, architecture, dével
 
 [Vers les supports et compléments](support)
 
-[Maven et github](/C2/MavenEtGithub/index.md)
+#### Encours
 
-[EDP1](/C2/EDP/edp1/index.md)
+[Maven et github](/C2/MavenEtGithub/)
+
+[EDP1](/C2/EDP/edp1/)
