@@ -1,6 +1,8 @@
 # definir cette variable au répertoire ou vous avez decider d'installer les
-# Ligiciel pour vos ED TP projets
-export C2INSTALL=$HOME
+# Logiciels pour vos ED TP projets
+# puis dans votre .bashrc ajouter cette ligne source <PathDuScript>/java12.sh [<install dir>] 
+export C2INSTALL=${1:-$HOME}
+echo $C2INSTALL
 
 # Le reste sera basé sur $C2INSTALL
 
