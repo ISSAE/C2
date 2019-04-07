@@ -78,6 +78,7 @@ OS name: "linux", version: "4.18.0-17-generic", arch: "amd64", family: "unix"
 
 # Créer un dépôt git, github racine pour tous vos ED/TP dans votre organisation github dédié au Cours C2
 
+Nous allons partir de cette [idée issue des TP de l'année précedente](http://opentraining.cofares.net/TP-GLG-Cnam-Liban/PremierTP/) puis étoffer...
 
 # récupère la version dernière version de tomcat 
 
