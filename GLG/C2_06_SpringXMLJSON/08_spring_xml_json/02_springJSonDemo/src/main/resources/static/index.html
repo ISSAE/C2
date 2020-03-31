@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exemples Spring et JSON</title>
+</head>
+<body>
+    
+    
+    <ul>
+        <li><a href="contact/3">Export JSon ou XML d'un objet</a></li>
+        <li>Testez plus précisément en ligne de commande :
+            <pre>
+                curl -v -H "Accept: application/json" http://localhost:8080/contact/3
+            </pre>
+            et
+            <pre>
+                curl -v -H "Accept: application/xml" http://localhost:8080/contact/3
+            </pre>
+        </li>
+        <li>
+            Démonstration inverse : POST de valeurs JSON ou XML vers l'application :
+
+            <pre>
+                curl -d '{"id": 10, "nom": "lovelace", "adresse": "Cambridge", "numeros": [{"typeInfo" : "BUREAU", "numero": "01402654678"}]}' -H "Content-Type: application/json" -X POST http://localhost:8080/contact
+            </pre>
+En XML : 
+            <pre>
+curl -d '&lt;Contact>&lt;id>3&lt;/id>&lt;nom>nom3&lt;/nom>&lt;adresse>adresse3&lt;/adresse>&lt;numeros>&lt;numeros>&lt;typeInfo>BUREAU&lt;/typeInfo>&lt;numero>0193378&lt;/numero>&lt;/numeros>&lt;numeros>&lt;typeInfo>MAISON&lt;/typeInfo>&lt;numero>06766854&lt;/numero>&lt;/numeros>&lt;/numeros>&lt;/Contact>' -H "Content-Type: application/xml" -X POST http://localhost:8080/contact
+            </pre>
+Le même sans numéro : 
+<pre>
+curl -d '&lt;Contact>&lt;id>3&lt;/id>&lt;nom>nom3&lt;/nom>&lt;adresse>adresse3&lt;/adresse>&lt;numeros>&lt;/numeros>&lt;/Contact>' -H "Content-Type: application/xml" -X POST http://localhost:8080/contact
+</pre>
+
+        </li>
+    </ul>
+</body>
+</html>

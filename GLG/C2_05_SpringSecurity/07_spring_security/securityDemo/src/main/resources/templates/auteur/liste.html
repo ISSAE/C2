@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+    th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::#nav/li})}">
+
+<head>
+    <title>Liste des Auteurs</title>
+</head>
+
+<body>
+    <ul id="nav">
+        <li sec:authorize-url="/admin/auteur/creer"><a href="#" th:href="@{/admin/auteur/creer}">Créer auteur</a></li>
+    </ul>
+    <main>
+        <table>
+            <tr>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Signature</th>
+            </tr>
+            <tr th:each="a : ${auteurs}">
+                <td th:text="${a.login}">un login</td>
+                <td th:text="${a.password}">un mot de passe</td>
+                <td th:text="${a.signature}">une signature</td>
+            </tr>
+        </table>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://webservice.glg203/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservice.glg203/">
+
+<xs:element name="TelephoneMalFormeException" nillable="true" type="tns:monExceptionBean"/>
+
+<xs:element name="creerPersonne" type="tns:creerPersonne"/>
+
+<xs:element name="creerPersonneResponse" type="tns:creerPersonneResponse"/>
+
+<xs:element name="creerPersonneTels" type="tns:creerPersonneTels"/>
+
+<xs:element name="creerPersonneTelsResponse" type="tns:creerPersonneTelsResponse"/>
+
+<xs:element name="personne" type="tns:personne"/>
+
+<xs:element name="telephone" type="tns:telephone"/>
+
+<xs:element name="telephones" type="tns:telephones"/>
+
+<xs:element name="telephonesResponse" type="tns:telephonesResponse"/>
+
+<xs:complexType name="creerPersonne">
+<xs:sequence>
+<xs:element name="nom" type="xs:string" minOccurs="0"/>
+<xs:element name="prenom" type="xs:string" minOccurs="0"/>
+<xs:element name="adresse" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="creerPersonneResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="creerPersonneTels">
+<xs:sequence>
+<xs:element name="nom" type="xs:string" minOccurs="0"/>
+<xs:element name="prenom" type="xs:string" minOccurs="0"/>
+<xs:element name="adresse" type="xs:string" minOccurs="0"/>
+<xs:element name="arg3" type="tns:telephone" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="telephone">
+<xs:sequence>
+<xs:element name="numero" type="xs:string" minOccurs="0"/>
+<xs:element name="typeTelephone" type="tns:typeTelephone" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="creerPersonneTelsResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="monExceptionBean">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="telephones">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="telephonesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:personne" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="personne">
+<xs:sequence>
+<xs:element name="adresse" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="nom" type="xs:string" minOccurs="0"/>
+<xs:element name="prenom" type="xs:string" minOccurs="0"/>
+<xs:element name="telephones" type="tns:telephone" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="typeTelephone">
+<xs:restriction base="xs:string">
+<xs:enumeration value="PERSONNEL"/>
+<xs:enumeration value="PROFESSIONNEL"/>
+<xs:enumeration value="MOBILE"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

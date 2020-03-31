@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mise en place de login et password...</title>
+    <style>
+        nav {
+            margin-bottom: 2em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>Login :<span th:text="${#authentication.name}">login courant...</span></div>
+   Cette application montre les fonctionnalités de login et logout de deux manières.
+
+   <ul>
+       <li>à travers des pages personnalisées 
+           <ul>
+                <li><a th:href="@{/login}">login</a> </li>
+                <li><form th:action="@{/logout}" method="post">
+                    <button type="submit">logout</button>
+                    </form> (attention, logout est supposé être aussi exécuté en mode POST)
+                </li>
+           </ul>
+       </li>
+   </ul>
+
+   Pour vérifier que la connexion est bien faite, on peut aller visiter une 
+   <a th:href="@{/protegee}">page protégée</a>
+
+   Login "en ligne..."
+   <form th:action="@{/login}" method="POST">
+    Login <input type="text" id="username" name="username" />
+    Mot de passe <input type="password" id="password" name="password" />
+    <button type="submit" class="btn">Log in</button>
+</form>
+
+</body>
+
+</html>

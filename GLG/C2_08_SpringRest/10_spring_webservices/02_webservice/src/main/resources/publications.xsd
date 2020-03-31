@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://glg203.cnam.fr/publications" 
+	xmlns:tns="http://glg203.cnam.fr/publications" elementFormDefault="qualified">
+	<!--
+  - Définit les types et les méthodes qui seront mises en œuvre par le web service.
+  - Ce fichier servira à engendrer la description wsdl du service. 
+ -->
+
+	<!-- la fin des noms (Request et Response) est importante !!-->
+
+	<element name="creerPublicationRequest">
+		<complexType>
+			<sequence>
+				<element name="maPublication" type="tns:publication"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!-- <element name="creerPublicationResponse" type="tns:empty"></element>  -->
+
+	<element name="listePublicationsRequest">
+		<complexType/>
+	</element>
+
+	<element name="listePublicationsResponse">
+		<complexType>
+			<sequence>
+				<element name="liste" type="tns:publications"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="publication">
+		<sequence>
+			<element name="titre">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="1"></minLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="contenu" type="string"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="publications">
+		<sequence>
+			<element name="publications" type="tns:publication" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+</schema>

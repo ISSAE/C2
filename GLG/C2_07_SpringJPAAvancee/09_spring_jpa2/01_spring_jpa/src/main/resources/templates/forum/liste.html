@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{layout :: layout(title= ~{::title}, head= ~{::#head} ,content = ~{::main})}">
+
+<head>
+    <title>Forum</title>
+    <th:block id=head>
+        <style>
+            .doc {
+                background-color: lightskyblue;
+                border-radius: 2ex;
+                padding: 1ex;
+                margin: 2ex;
+            }
+        </style>
+
+        <!-- et tout ce qu'on veut...-->
+    </th:block>
+</head>
+
+<body>
+    <main>
+        <h1>Forum</h1>
+        <div class="comment">
+            Une page montrant une liste de "forums" dont les messages sont gérés par une cascade.
+            <p> Comme d'habitude, on regardera la base de données pour voir ce qui s'y passe.</p>
+        </div>
+        <form th:action="@{/forum/creer}" method="post">
+            <button>Créer un nouveau forum</button>
+        </form>
+        <th:block class="doc" th:each="forum : ${liste}">
+            <h2 th:text="${forum.titre}">Titre du forum</h2>
+            <div class="forumOp">
+                <form th:action="@{/forum/detruire}" method="post">
+                    <input type="hidden" name="id" th:value="${forum.id}"/>
+                    <button>détruire le forum</button>
+                </form>
+                <form th:action="@{/forum/ajouterMessage}" method="post">
+                    <input type="hidden" name="id" th:value="${forum.id}"/>
+                    <button>Ajoute un message à ce forum</button>
+                </form>
+            </div>
+            <div th:each="message: ${forum.messages}" class=" message">
+                <div th:text="${message.texte}"></div>
+            </div>
+
+        </th:block>
+    </main>
+</body>
+
+</html>

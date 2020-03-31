@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+    th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::#nav/li})}">
+<head>
+    <title>Messages</title>
+</head>
+<body>    
+    <ul id="nav">
+        <li sec:authorize-url="/message/creer"><a href="#" th:href="@{/message/creer}">Créer message</a></li>  
+    </ul>
+</ul>
+    <main>
+       <section class="message" th:each="m : ${liste}">
+        <h2 th:text="${m.titre}">titre...</h2>
+        [[${m.texte}]]
+        <div class="signature" th:text="${m.signature}">par....</div>
+
+        destructible : [[${m.destructible}]]
+
+        <!-- règle thymeleaf. Noter l'utilisation de #vars -->
+        <div sec:authorize="${hasRole('ADMIN') or #vars.m.login == #authentication.name}">
+            Ce message peut être détruit... 
+        </div>
+
+        <!-- la même chose avec th:if. On double les guillemets pour les simplifier.. -->
+        <div th:if="${#authorization.expression('hasRole(''ADMIN'')') or m.login == #authentication.name}">
+                Ce message peut être détruit (test avec th:if)...
+        </div>
+
+         <!-- En fait, on a fait le travail dans m... -->
+         <div th:if="${m.destructible}">
+                Ce message peut être détruit (travail réalisé dans le modèle)...
+        </div>
+        <p>Ce bouton devrait être caché si l'opération est impossible...
+            Les textes ci-dessus montrent comment faire (voir code).
+            On le met en place pour pouvoir constater que l'opération est effectivement impossible, 
+            et que ce n'est pas juste l'interface qui la cache.
+        </p>
+        <form th:action="@{/message/{messageId}/delete(messageId=${m.id})}" method="POST">
+            <input type="submit" value="delete"/>
+        </form>
+       </section>
+    </main>
+</body>
+</html>

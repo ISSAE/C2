@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="dessin"
+           elementFormDefault="qualified">
+    <!-- Dessin un peu plus complexe que dessin_1 : suite de cercles ou de segments.-->
+    <xs:element name="dessin">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element name="cercle" >
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element  name="x" type="xs:decimal"/>                
+                                <xs:element  name="y" type="xs:decimal"/>                
+                                <xs:element  name="r" type="xs:decimal"/>                
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="segment" >
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element  name="x0" type="xs:decimal"/>                
+                                <xs:element  name="y0" type="xs:decimal"/>                
+                                <xs:element  name="x1" type="xs:decimal"/>                
+                                <xs:element  name="y1" type="xs:decimal"/>                                                
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

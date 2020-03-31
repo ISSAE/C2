@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, content, menu)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:replace="${title}">Démonstration de layout</title>
+    <style>
+        nav {
+            margin-bottom: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <header th:fragment="header">
+        <div sec:authorize="isAuthenticated()">Login : <span sec:authentication="name"></span> <a href="#"
+                th:href="@{/logout}">se déconnecter</a></div>
+        <div sec:authorize="not isAuthenticated()">Pas identifié <a href="#" th:href="@{/login}">se connecter</a></div>
+        <nav>
+            <ul>
+                <li><a href="#" th:href="@{/}">maison</a></li>
+                <li sec:authorize-url="/admin/"><a href="" th:href="@{/admin/auteur}">gérer les auteurs</a></li>
+                <th:block th:replace="${menu}"></th:block>
+            </ul>
+        </nav>
+    </header>
+    <main th:replace="${content}">
+        (vide)
+    </main>
+
+    <footer>
+        <ul>
+            <div sec:authorize-url="/admin/**">
+                <li>Vous avez accès aux fonctionnalités d'administration</li>
+            </div>
+            <div sec:authorize-url="/admin/auteur/**">
+                <li>Vous pouvez lister et créer des auteurs</li>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <!-- Notez qu'on ne peut malheureusement pas utiliser ici sec:authorize-url, 
+                    car il ne sait pas utiliser @Secured :-( 
+
+                    On pourrait s'en sortir en déclarant la totalité des droits dans WebSecurityConfig.
+                -->
+                <li>Vous pouvez créer des messages.</li>
+            </div>           
+        </ul>
+
+        <h2>Quelques pages</h2>
+        <ul>
+            <li><a href="#" th:href="@{/info}">informations sur l'utilisateur</a></li>
+            <li><a href="#" th:href="@{/anonyme}">une page visible uniquement si on n'est pas connecté</a></li>
+            <li><a href="#" th:href="@{/admin/hello}">page visible par le seul administrateur</a></li>
+            <li><a href="#" th:href="@{/roleNonDonne}">une page associé à un rôle inutilisé : personne n'y a accès</a></li>
+            <li><a href="#" th:href="@{/roleUser}">page visible par les seuls utilisateurs connectés</a></li>
+            <li><a href="#" th:href="@{/roleUser}">page visible par les seuls utilisateurs connectés</a></li>
+
+            
+        </ul>
+    </footer>
+</body>
+
+</html>

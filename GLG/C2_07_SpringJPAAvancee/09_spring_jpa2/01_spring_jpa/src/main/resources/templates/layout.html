@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:fragment="layout">
+<!-- paramètres possibles du fragment : title, head,content-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:replace="${title}?:~{}">Démonstration de layout</title>
+    <style>
+        header {
+            margin-bottom: 1ex;
+            background-color: blue;
+            padding: 2ex;
+            color: white;
+        }
+
+        header a {
+            text-decoration-line: none;
+            color: inherit;
+        }
+
+        header *:visited {
+            color: inherit;
+        }
+        header .comment {
+            text-align: center;
+            font-style: italic;
+            background-color: inherit;
+            padding: 0em;
+            margin: 0em;
+        }
+        .comment {
+            margin: 2em;
+            background-color: lightcyan;
+            border-radius: 1em;
+            padding: 2ex;
+            font-style: italic;
+        }
+    </style>
+
+    <th:block th:replace="${head}?:~{}">
+        <!-- notez l'utilisation du fragment vide ~{} comme valeur par défaut -->
+    </th:block>
+
+</head>
+
+<body>
+    <header th:fragment="header">
+        <nav>
+            <a href="#" th:href="@{/}">home</a>
+            <a href="#" th:href="@{/h2-console}" target="_blank">console h2</a>
+        </nav>
+        <div class="comment">pour la console, utilisez jdbc:h2:mem:demo comme url de base</div>
+    </header>
+    <main th:replace="${content}?:~{}">
+        (vide)
+    </main>
+
+</body>
+
+</html>

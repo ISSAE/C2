@@ -1,0 +1,89 @@
+/*
+ * Ce projet comporte beaucoup de parties indépendantes.
+ * 
+ * La plus complexe, c'est la configuration de Jaxb - ou plus exactement de l'engendrement de classes
+ * java à partir d'un schéma xsd.
+ * 
+ * Il existe plusieurs plugins gradle pour le faire : https://plugins.gradle.org/search?term=jaxb
+ *
+ * En l'absence d'un plugin plus ou moins officiel, cependant, nous avons préféré
+ * suivre https://gdpotter.com/2017/08/14/jaxb-gradle-config/
+ * qui montre comment le faire "from scratch" en gradle (avec un peu d'ant).
+ *
+ */
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+}
+
+// permet d'utiliser "jaxb" comme préfixe dans les dépendances.
+// nous évitera ensuite d'embarquer le jaxb-xjc dans l'exécutable final. 
+configurations {
+    jaxb
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+// Création de classes java à partir de Jaxb :
+task genJaxb {
+    ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
+    ext.classesDir = "${buildDir}/classes/jaxb"
+    ext.schema = "${projectDir}/src/main/resources/glg203/ressources/jaxb/person.xsd"
+    outputs.dir classesDir
+
+    doLast() {
+        project.ant {
+            // Create output directories
+            mkdir(dir: sourcesDir)
+            mkdir(dir: classesDir)
+
+            taskdef name: 'xjc', classname: 'com.sun.tools.xjc.XJCTask', classpath: configurations.jaxb.asPath
+
+            xjc(destdir: sourcesDir, schema: schema, 'package': 'glg203.ressources.jaxb') {
+                produces(dir: sourcesDir, includes: '**/*.java')
+            }
+
+        javac(destdir: classesDir, source: 1.8, target: 1.8, debug: true,
+                debugLevel: 'lines,vars,source',
+                includeantruntime: false,
+                classpath: configurations.jaxb.asPath) {
+                    src(path: sourcesDir)
+                    include(name: '**/*.java')
+                    include(name: '*.java')
+                }
+        copy(todir: classesDir) {
+            fileset(dir: sourcesDir, erroronmissingdir: false) {
+                exclude(name: '**/*.java')
+            }
+        }       
+    }
+  }
+}
+
+// Force la compilation java à dépendre du lancement de la tâche Jaxb.
+compileJava.dependsOn 'genJaxb'
+
+
+dependencies {
+    // Pour JSON
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
+    implementation group: 'org.jdom', name: 'jdom2', version: '2.0.6'
+
+    // Création de classes java à partir de Jaxb :
+    jaxb "com.sun.xml.bind:jaxb-xjc:2.1.8"
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+}
+
+// Ajout des tâches créées par jaxb au classpath.
+sourceSets.main.java.srcDirs += "build/generated-sources/jaxb"
+
+jar {
+  from genJaxb.classesDir
+}

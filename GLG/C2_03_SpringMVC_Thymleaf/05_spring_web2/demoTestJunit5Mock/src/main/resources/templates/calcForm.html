@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Calcul</title>
+
+    <script>
+        function checkNotEmpty() {
+            var erreurElt = document.getElementById("erreur");
+            var a = document.getElementById(("a"));
+            var b = document.getElementById(("b"));
+            if (a.value.trim() === "" || b.value.trim() === "") {
+                erreurElt.textContent = "les champs ne doivent pas être vide";
+                return false;
+            } else {
+                erreurElt.textContent = "";
+                return true;
+            }
+
+        }
+    </script>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<h1 th:text="#{computationForm}">(titre à remplacer)</h1>
+         Entrez deux nombres positifs.
+
+<p><strong>Résultat </strong> <span th:text="${resultat}" id="resultat"></span></p>
+
+<form action="#" method="post"
+         th:action="@{'/'}"
+         th:object="${calcForm}"
+         onsubmit="return checkNotEmpty()" >
+    <div class="form-group">
+    <input id="a" type="text"  th:field="*{a}" th:errorclass="'is-invalid'" class="form-control"/>
+    <p th:if="${#fields.hasErrors('a')}" th:errors="*{a}" class="invalid-feedback">Incorrect</p>
+    </div>
+    <div class="form-group">
+    <input id="b" type="text"  th:field="*{b}" th:errorclass="'is-invalid'" class="form-control"/>
+    <p th:if="${#fields.hasErrors('b')}" th:errors="*{b}" class="invalid-feedback">Incorrect</p>
+    </div>
+    <input id="submit" type="submit" class="btn btn-primary"/>
+</form>
+
+<div id="erreur"></div>
+</body>
+</html>

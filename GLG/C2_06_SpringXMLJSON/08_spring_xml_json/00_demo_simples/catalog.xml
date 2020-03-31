@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/Users/rosmord/Documents/MesDocuments/Cours/CNAM/GLG203-GLG204/XML/exemplesCoursXML/src/glg203/xml/jaxb/person.xsd" uri="xml-resources/jaxb/myBinding1/person.xsd"/>
+    <nextCatalog catalog="nbproject/private/retriever/catalog.xml"/>
+</catalog>

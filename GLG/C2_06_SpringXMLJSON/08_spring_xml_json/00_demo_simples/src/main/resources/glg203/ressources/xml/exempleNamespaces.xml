@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
+    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"     
+      xmlns:svg="http://www.w3.org/2000/svg"  
+
+      >
+    <!-- 
+        D'après http://dev.w3.org/SVG/proposals/svg-html/svg-html-proposal.html 
+        Mélanger XHTML et SVG n'est pas possible avec les schémas (qui ne sont pas
+        prévu pour). On utilise donc une DTD spécifique.
+    -->
+    <head>
+        <title>SVG et HTML name collisions</title>
+    </head>
+    <body>
+        <svg:svg baseProfile="tiny" width="300px" height="200px">
+            <svg:title>A textarea</svg:title>
+            <svg:desc>A textarea that illustrates the name 
+                collisions between svg and xhtml</svg:desc>            
+            <svg:textArea width="200" height="50" />
+        </svg:svg>
+        <div>
+            <textarea rows='10' cols="80" name="text">Morceau de formulaire</textarea>
+        </div>
+    </body>
+</html>

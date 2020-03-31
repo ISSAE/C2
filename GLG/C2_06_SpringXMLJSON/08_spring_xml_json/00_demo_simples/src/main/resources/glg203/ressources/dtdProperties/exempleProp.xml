@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM 'prop.dtd'>
+<properties>
+    <comment>Un commentaire..  
+    </comment>
+    <entry key="a">toto</entry>
+    <entry key="b">titi</entry>
+</properties>

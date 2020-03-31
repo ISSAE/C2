@@ -1,0 +1,29 @@
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+
+    // Apply the application plugin to add support for building an application
+    id 'application'
+}
+
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    mavenCentral()    
+}
+
+dependencies {
+    // This dependency is found on compile classpath of this component and consumers.
+    implementation 'org.springframework:spring-core:5.1.9.RELEASE'
+    implementation 'org.springframework:spring-context:5.1.9.RELEASE'
+    testCompile 'org.springframework:spring-test:5.1.9.RELEASE'
+
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+}
+
+// Define the main class for the application
+mainClassName = 'glg203.cours03.appAnnotation.App'
+

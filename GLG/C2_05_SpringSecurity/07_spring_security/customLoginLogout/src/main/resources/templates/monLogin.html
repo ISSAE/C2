@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form th:action="@{/login}" method="POST">
+        <div th:if="${param.error}">erreurs </div>
+        <div th:if="${param.logout}">Vous êtes déconnecté</div>
+        Login <input type="text" id="username" name="username" /><br />
+        Mot de passe <input type="password" id="password" name="password" />
+        <button type="submit" class="btn">Log in</button>
+    </form>
+
+    <a th:href="@{/}">maison</a>
+</body>
+
+</html>

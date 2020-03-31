@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{layout :: layout(title= ~{::title}, head= ~{::#head} ,content = ~{::main})}">
+
+<head>
+    <!-- adapter https://stackoverflow.com/questions/22093149/thymeleaf-fragments-and-default-parameters-->
+    <title>Liste des factures</title>
+    <th:block id=head>
+        <style>
+            .doc {
+                background-color: lightskyblue;
+                border-radius: 2ex;
+                padding: 1ex;
+                margin: 2ex;
+            }
+        </style>
+
+        <!-- et tout ce qu'on veut...-->
+    </th:block>
+</head>
+
+<body>
+    <main>
+        <h1>Affichage des Factures</h1>
+        <div class="comment">Affiche la liste des factures et permet d'en modifier le contenu.
+            <p>Pour être (un peu) plus réalistes, nous avons désactivé l'option <code>spring.jpa.open-in-view</code>.
+                Ainsi, les lignes de facture ne peuvent être récupérées à la volée lors de l'affichage. Il faut les
+                charger
+                avant.
+            </p>
+            <p>Si vous voulez constater le problème, modifiez le code de <code>FactureRepository</code> pour commenter 
+                l'annotation <code>@EntityGraph.</code>
+            </p>              
+        </div>
+        <form th:action="@{/facture/moinsUn}" method="POST">
+            <input type="submit" value="retirer une unité" />
+        </form>
+
+        <section class="doc" th:each="f : ${liste}">
+            <h2>Facture pour [[${f.nom}]]</h2>
+            <ul>
+                <li th:each="ligne: ${f.lignesCommandes.values()}"><b>[[${ligne.produit.designation}]] :</b>
+                    [[${ligne.quantite}]] (P.U. [[${ligne.produit.prix}]])</li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>

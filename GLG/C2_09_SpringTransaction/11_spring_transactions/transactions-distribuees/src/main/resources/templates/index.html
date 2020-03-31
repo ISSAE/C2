@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Virement</title>
+    <style>
+        .comptes {margin-bottom: 2em;}
+        .comptes span {margin-left: 2em; padding: 4pt; background-color: aqua; border-radius: 1ex;}
+        .remarque {
+            margin: 1em;
+            color: red;
+            font-style: italic;
+        }
+        .message {
+            margin: 3em;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">[[${message}]]</div>
+    <div class="comptes">
+        <span class="compte" th:each="c : ${comptes}"> [[${c.nom}]], solde [[${c.solde}]]</span>
+    </div>
+
+    Effectuer un virement du compte 1 vers le compte 2 :
+    <form th:action="@{/virer}" method="POST">
+        <label>Montant : <input type="text" name="montant"/></label>
+        <button>virer</button>
+    </form>    
+
+    <section class="remarque">
+        <h2>Démonstration de transactions distribuées</h2>
+        Dans cette démonstration, les deux comptes en banque sont situés dans deux bases de 
+        données différentes.
+
+        <ul>
+            <li>un virement est un retrait suivi d'un dépôt ;</li>
+            <li>le code est écrit de telle manière que le dépôt de 100 euros lève une exception ;</li>
+            <li>la mise en place d'un gestionnaire de transactions distribuées fait que le rollback 
+                dû à cette exception va concerner aussi l'opération d'origine (effectuée sur la première base de données.) </li>
+            <li>cette fonctionnalité demande un peu de travail : Spring boot n'intègre pas un tel gestionnaire par défaut. Ici, nous utilisons Atomikos.</li>
+            <li>pour que la démonstration soit un peu réaliste, le logiciel démarre deux serveurs sql
+                apache derby en tcp.
+            </li>
+            <li>Un affichage simple du contenu des deux bases est disponible avec le petit programme jdbc Dump inclus dans cette 
+                application.
+            </li>
+        </ul>
+    </section>
+</body>
+</html>

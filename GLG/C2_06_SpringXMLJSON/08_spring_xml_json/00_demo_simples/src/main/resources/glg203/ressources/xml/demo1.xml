@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<revue>
+    <preface></preface>
+    <article pages="1-30">
+        <titre>Le calcul de la suite de Fibonnacci </titre>
+        <auteur>Ada Lovelace</auteur>
+        <chapitre>
+            <titre>Introduction</titre>
+            bla bla bla...
+        </chapitre>
+    </article>
+    <article pages="31-60">
+        <titre>Enigma decrypted </titre>
+        <auteur>Alan Turing</auteur>
+        <chapitre>
+            <titre>Introduction</titre>
+            bla bla bla...
+        </chapitre>
+    </article>
+    <article pages="61-80">
+        <titre>Notes de lecture</titre>
+        <chapitre>
+            <titre>Introduction</titre>
+            bla bla bla...
+        </chapitre>
+    </article>
+</revue>

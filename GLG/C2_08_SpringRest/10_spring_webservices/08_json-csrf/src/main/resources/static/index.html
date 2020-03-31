@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Application Ajax</title>
+    <script src="js/script.js"></script>
+    <script src="/webjars/axios/dist/axios.js"></script>
+
+    <style>
+        .message {
+            margin-bottom: 2em;
+            margin-left: 1ex;
+            margin-right: 1ex;
+            background-color: antiquewhite;
+            border-radius: 2ex;
+            padding: 2ex;
+        }
+        .form {
+            margin-bottom: 2em;
+            margin-left: 4ex;
+            margin-right: 4ex;
+            background-color: aquamarine;
+            border-radius: 2ex;
+            padding: 2ex;
+        }
+    
+        #message {font-weight: bold;}
+
+        .erreur {color: red;}
+    </style>
+</head>
+<body>
+    <h1>Un petit exemple d'application AJAX</h1>
+    
+    <div id="erreur" class="erreur"></div>
+
+    <div class="message">
+        Le message : <span id="message"></span>
+        <button>rafraîchir</button>
+    </div>
+
+    <div id="loginForm" class="form">
+        Login <input type="text" id="login" value="user">
+        Password <input type="password" id="password" value="user">
+        <button>login</button>
+    </div>
+
+    <div id="sendForm" class="form">
+        Nouveau texte du message : <input type="text">
+        <button>Envoyer</button>
+    </div>
+
+    <div id="logoutForm" class="form"><button>logout</button></div>
+    <script>initPage()</script>
+</body>
+</html>

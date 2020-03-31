@@ -1,0 +1,86 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+  	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'eclipse'
+	id 'idea'
+	id 'java'
+}
+
+
+configurations {
+  jaxb
+  developmentOnly
+  runtimeClasspath {
+    extendsFrom developmentOnly
+  }
+}
+
+
+task genJaxb {
+    ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
+    ext.classesDir = "${buildDir}/classes/jaxb"
+    ext.schema = "src/main/resources/publications.xsd"
+
+    outputs.dir classesDir
+
+    doLast() {
+        project.ant {
+            taskdef name: "xjc", classname: "com.sun.tools.xjc.XJCTask",
+                    classpath: configurations.jaxb.asPath
+            mkdir(dir: sourcesDir)
+            mkdir(dir: classesDir)
+
+            xjc(destdir: sourcesDir, schema: schema) {
+                arg(value: "-wsdl")
+                produces(dir: sourcesDir, includes: "**/*.java")
+            }
+
+            javac(destdir: classesDir, source: 1.8, target: 1.8, debug: true,
+                    debugLevel: "lines,vars,source", includeantruntime: "false", 
+                    classpath: configurations.jaxb.asPath) {
+                src(path: sourcesDir)
+                include(name: "**/*.java")
+                include(name: "*.java")
+            }
+
+            copy(todir: classesDir) {
+                fileset(dir: sourcesDir, erroronmissingdir: false) {
+                    exclude(name: "**/*.java")
+                }
+            }
+        }
+    }
+}
+
+bootJar {
+    baseName = 'glg203.webservice'
+    version =  '0.0'
+    from genJaxb.classesDir
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    //compile("org.springframework.boot:spring-boot-starter-web")
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	// Spécifiques web service :
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation "wsdl4j:wsdl4j:1.6.3"	
+	jaxb("org.glassfish.jaxb:jaxb-xjc:2.3.2")
+	compile(files(genJaxb.classesDir).builtBy(genJaxb))
+}
+
+clean {
+    delete 'bin'
+}
+
+
+

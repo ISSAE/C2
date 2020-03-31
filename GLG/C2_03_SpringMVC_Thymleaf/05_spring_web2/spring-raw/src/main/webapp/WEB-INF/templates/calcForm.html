@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calcul</title>
+    <style>
+        .fieldError {border: solid 1pt red;}
+    </style>
+</head>
+<body>
+<h1>Un calcul simple</h1>
+
+    Entrez deux nombres positifs.
+
+<p><strong>Résultat </strong> <span th:text="${resultat}" id="resultat"></span></p>
+
+<form action="#" th:object="${calcForm}"
+      method="post">
+    <input  type="text" th:field="*{a}" th:errorclass="fieldError"/>
+    <p th:if="${#fields.hasErrors('a')}" th:errors="*{a}"></p>
+    <br/>
+    <input  type="text" th:field="*{b}" th:errorclass="fieldError"/>
+    <p th:if="${#fields.hasErrors('b')}" th:errors="*{b}"></p>
+    <br/>
+    <input id="submit" type="submit"/>
+</form>
+
+
+</body>
+</html>

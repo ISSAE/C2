@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+    th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{})}">
+<head>
+    <title>Nouveau message</title>
+</head>
+<body>
+    <main>
+        <!-- voir cours à propos du champ "_csrf". -->
+        <form th:object="${form}" method="POST" th:action="@{/message/creer}">
+            titre : <input type="text" th:field="*{titre}" /><br/>
+            <textarea th:field="*{texte}"></textarea><br/>
+            <input type="submit" />
+        </form>
+    </main>
+</body>
+</html>

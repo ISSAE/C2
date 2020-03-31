@@ -1,0 +1,11 @@
+[
+    {
+        "_class" : "glg203.jpa.model.embed.Client",
+        "nom" : "Turing",
+        "adresse" : {
+            "rue" : "Saint Martin",
+            "ville" : "Paris",
+            "codePostal" : "75003"
+        }
+    }   
+]

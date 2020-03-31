@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{layout :: layout(title = ~{::title},  content = ~{::main})}">
+
+<head>
+    <title>Démonstration JPA, V2</title>
+</head>
+
+<body>
+    <main>
+        <h1>Démonstration JPA, V2</h1>
+
+        <div class="comment">
+            Pour la plupart des cas, on aura <strong>vraiment</strong> intérêt à regarder
+            comment le côté SQL est implémenté,
+            en consultant la <a th:href="@{/h2-console/}">console h2</a>
+
+        </div>
+
+        <h2>Éléments intégrés</h2>
+
+        Les objets @Embeddable ne sont pas traités comme des entité. Regardez la table <code>CLIENT</code> dans
+        la base SQL.
+
+        <ul>
+            <li><a th:href="@{/client/test}">Ajouter un client</a></li>
+            <li><a th:href="@{/client}">Lister les clients</a></li>
+        </ul>
+
+        <h2>Héritage</h2>
+
+        La classe Document est étendue par deux autres classes, TextDocument et ImageDocument.
+        Il est aussi intéressant de regarder <a th:href="@{/h2-console/}">la console h2.</a>
+
+        <ul>
+            <li><a th:href="@{/document}">Liste des documents</a></li>
+        </ul>
+
+        <h2>Intégration de collections (maps)</h2>
+        Une démonstration de l'utilisation de <code>@ElementCollection</code> avec une Map.
+        <p>Amusez-vous à presser ensuite le bouton "retirer une unité".</p>
+        <p>La classe <code>FactureRepository</code>
+            montre aussi l'utilisation d'un <code>@EntityGraph,</code>
+            et de l'annotation <code>@Cacheable().</code>
+        </p>
+        <ul>
+            <li><a th:href="@{/facture}">Liste des factures</a></li>
+        </ul>
+
+        <h2>Intégration de collections (liste)</h2>
+        Exemple de propriété liste.
+        <ul>
+            <li><a th:href="@{/tableMatieres}">table des matières</a></li>
+        </ul>
+
+        <h2>Démonstration de cascade ALL</h2>
+
+        <ul>
+            <li><a th:href="@{/forum}">Forum</a></li>
+        </ul>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mondocument>
+    <titre>Le Seigneur des anneaux</titre>
+    <chapitre>
+        <titre>La communauté de l'anneau</titre>
+        <p> Dans ce volume, Frodo Baggins et ses compagnons se mettent
+            en route, poursuivis par les Nazguls, afin de détruire
+            l'anneau unique.
+        </p>
+    </chapitre>
+    <chapitre>
+        <titre>Les deux tours</titre>
+        <p>Après la traversée de la Moria, la troupe, privée de Gandalf,
+            se repose chez Galadriel. Elle se remet en route, pour se trouver bientôt 
+            dispersée.
+        </p>
+    </chapitre>
+    <commentaire>C'est un commentaire sans intérêt</commentaire>
+    <chapitre>
+        <titre>Le retour du roi</titre>
+        <p>Ça va chauffer pour Sauron.</p>
+    </chapitre>
+</mondocument>        

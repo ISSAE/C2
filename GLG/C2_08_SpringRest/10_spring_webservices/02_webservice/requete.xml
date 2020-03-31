@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+	<S:Body>
+		<listePublicationsRequest xmlns="http://glg203.cnam.fr/publications"/>
+	</S:Body>
+</S:Envelope>

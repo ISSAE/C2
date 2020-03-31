@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<ds:dessin
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:ds='dessin'
+    xsi:schemaLocation='dessin http://deptinfo.cnam.fr/~rosmorse/dessin.xsd'>
+     <ds:segment>
+        <ds:x0>12</ds:x0>
+        <ds:y0>12</ds:y0>
+        <ds:x1>12</ds:x1>
+        <ds:y1>12</ds:y1>
+    </ds:segment>
+     <ds:segment>
+        <ds:x0>12</ds:x0>
+        <ds:y0>12</ds:y0>
+        <ds:x1>12</ds:x1>
+        <ds:y1>12</ds:y1>
+    </ds:segment>
+    <ds:cercle>
+        <ds:x>10</ds:x>
+        <ds:y>10</ds:y>
+        <ds:r>20</ds:r>            
+    </ds:cercle>
+     <ds:segment>
+        <ds:x0>12</ds:x0>
+        <ds:y0>12</ds:y0>
+        <ds:x1>12</ds:x1>
+        <ds:y1>12</ds:y1>
+    </ds:segment>
+   <ds:cercle>
+        <ds:x>13</ds:x>
+        <ds:y>40</ds:y>
+        <ds:r>10</ds:r>            
+    </ds:cercle>
+    <ds:segment>
+        <ds:x0>12</ds:x0>
+        <ds:y0>12</ds:y0>
+        <ds:x1>12</ds:x1>
+        <ds:y1>12</ds:y1>
+    </ds:segment>
+
+</ds:dessin>

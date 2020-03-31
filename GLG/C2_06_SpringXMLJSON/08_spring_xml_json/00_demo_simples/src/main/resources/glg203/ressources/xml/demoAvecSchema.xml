@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personne
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='file:/Users/rosmord/Documents/MesDocuments/Cours/GLG203-GLG204/XML/exemplesCoursXML/src/glg203/xml/jaxb/person.xsd'>
+    <id></id>
+    <nom></nom>
+    <telephones>
+        <telephone>
+            <numero></numero>
+        </telephone>
+        <telephone>
+            <numero></numero>
+        </telephone>
+        <telephone>
+            <numero></numero>
+        </telephone>
+    </telephones>
+
+</personne>

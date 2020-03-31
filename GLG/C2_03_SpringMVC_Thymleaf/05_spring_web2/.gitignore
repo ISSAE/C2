@@ -1,0 +1,14 @@
+.classpath
+.project
+.settings
+.vscode
+bin
+gradle
+gradlew
+gradlew.bat
+.idea
+.nb-gradle
+build
+.gradle
+.DS_Store
+

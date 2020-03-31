@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{})}">
+
+<head>
+    <title>Formulaire</title>
+</head>
+
+<body>
+   
+    <main>
+        <!-- Note : le fait d'utiliser th:action ici permet à Thymeleaf d'injecter 
+            le champ caché "_csrf".
+
+            Je conseille donc de l'utiliser, même si, avec notre architecture actuelle,
+            cet attribut est inutile...
+        -->
+        <form th:object="${form}" method="POST" th:action="@{/admin/auteur/creer}">
+            Login : <input type="text" th:field="*{login}" /><br />
+            Password : <input type="text" th:field="*{password}" /><br />
+            Signature : <input type="text" th:field="*{signature}" /><br />
+            <input type="submit" />
+        </form>
+    </main>
+</body>
+
+</html>

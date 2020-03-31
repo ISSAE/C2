@@ -1,0 +1,96 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns:sch="http://glg203.cnam.fr/publications" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns:tns="http://glg203.cnam.fr/publications" targetNamespace="http://glg203.cnam.fr/publications">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://glg203.cnam.fr/publications">
+      <!--
+
+  - Définit les types et les méthodes qui seront mises en œuvre par le web service.
+  - Ce fichier servira à engendrer la description wsdl du service. 
+ 
+-->
+      <!--
+ la fin des noms (Request et Response) est importante !!
+-->
+      <element name="creerPublicationRequest">
+        <complexType>
+          <sequence>
+            <element name="maPublication" type="tns:publication"/>
+          </sequence>
+        </complexType>
+      </element>
+      <!--
+ <element name="creerPublicationResponse" type="tns:empty"></element>  
+-->
+      <element name="listePublicationsRequest">
+        <complexType/>
+      </element>
+      <element name="listePublicationsResponse">
+        <complexType>
+          <sequence>
+            <element name="liste" type="tns:publications"/>
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="publication">
+        <sequence>
+          <element name="titre">
+            <simpleType>
+              <restriction base="string">
+                <minLength value="1"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element name="contenu" type="string"/>
+        </sequence>
+      </complexType>
+      <complexType name="publications">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="publications" type="tns:publication"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="listePublicationsRequest">
+    <wsdl:part element="tns:listePublicationsRequest" name="listePublicationsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listePublicationsResponse">
+    <wsdl:part element="tns:listePublicationsResponse" name="listePublicationsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerPublicationRequest">
+    <wsdl:part element="tns:creerPublicationRequest" name="creerPublicationRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PublicationsPort">
+    <wsdl:operation name="listePublications">
+      <wsdl:input message="tns:listePublicationsRequest" name="listePublicationsRequest"></wsdl:input>
+      <wsdl:output message="tns:listePublicationsResponse" name="listePublicationsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerPublication">
+      <wsdl:input message="tns:creerPublicationRequest" name="creerPublicationRequest"></wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PublicationsPortSoap11" type="tns:PublicationsPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="listePublications">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="listePublicationsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listePublicationsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerPublication">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="creerPublicationRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PublicationsPortService">
+    <wsdl:port binding="tns:PublicationsPortSoap11" name="PublicationsPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

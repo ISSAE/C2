@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="dessin"
+           elementFormDefault="qualified">
+    <!-- Schema simple de dessin comme d'une suite de cercles.-->
+    <xs:element name="dessin">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cercle" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element  name="x" type="xs:decimal"/>                
+                            <xs:element  name="y" type="xs:decimal"/>                
+                            <xs:element  name="r" type="xs:decimal"/>                
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

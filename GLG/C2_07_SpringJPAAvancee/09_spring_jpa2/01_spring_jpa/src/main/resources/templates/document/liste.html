@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+    th:replace="~{layout :: layout(title= ~{::title}, head= ~{::#head} ,content = ~{::main})}">
+<head>
+    <!-- adapter https://stackoverflow.com/questions/22093149/thymeleaf-fragments-and-default-parameters-->
+    <title>Liste des documents</title>
+    <th:block id=head>
+        <style>
+            .doc {
+                background-color: lightskyblue;
+                border-radius: 2ex;
+                padding: 1ex;
+                margin: 2ex;
+            }
+        </style>
+
+        <!-- et tout ce qu'on veut...-->
+    </th:block>
+</head>
+
+<body>
+    <main>
+        <h1>Affichage des documents</h1>
+        <div class="comment">
+            Comme thymeleaf n'est a priori pas très doué pour écrire des visiteur et des structures objets 
+            complexes, on présente à la  visualisation une classe unique (un modèle de la vue donc).
+
+            <p>Dans notre cas, ce modèle est très simple, mais l'idée est assez puissante. 
+                Sa seule vraie limitation est qu'il repose sur le code java, et non sur thymeleaf.
+            </p>
+        </div>
+        <div class="doc" th:each="d : ${liste}">
+            <ul>
+                <li th:each="f: ${d.fields}"><b>[[${f.key}]] :</b> [[${f.value}]]</li>
+            </ul>
+        </div>
+
+        Id du "dernier" document [[${dernier.id}]]
+    </main>
+</body>
+
+</html>

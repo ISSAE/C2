@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Démonstration des MessageConverters</title>
+</head>
+<body>
+    
+    On peut voir <a href="image">l'image créée par le code.</a>
+
+    <p>Sinon :</p>
+
+    Récupération de l'image en jpeg : 
+    <pre>
+        curl -v -H "Accept: image/jpeg" http://localhost:8080/image > toto.jpg
+    </pre>
+
+    Récupération de l'image en png : 
+    <pre>
+        curl -v -H "Accept: image/png" http://localhost:8080/image > toto.png
+    </pre>
+
+    Information sur une personne :
+    <pre>
+        curl -v -H "Accept: text/html" http://localhost:8080/personne
+    </pre>
+
+    Envoi des données d'une personne : 
+    <pre>
+        curl -d 'Niklaus:Wirth' -H "Content-Type: text/plain" -X POST http://localhost:8080/personne
+    </pre>
+
+</body>
+</html>

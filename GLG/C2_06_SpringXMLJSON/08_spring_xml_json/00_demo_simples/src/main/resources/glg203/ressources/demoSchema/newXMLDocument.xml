@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:dessin
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:ns1='dessin'
+    xsi:schemaLocation='dessin http://deptinfo.cnam.fr/~rosmorse/dessin.xsd'>
+    <ns1:cercle>
+        <ns1:x></ns1:x>
+        <ns1:y></ns1:y>
+        <ns1:r></ns1:r>
+    </ns1:cercle>
+
+</ns1:dessin>

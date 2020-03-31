@@ -1,0 +1,89 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+  	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'eclipse'
+	id 'idea'
+	id 'java'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+configurations {
+  jaxb
+  developmentOnly
+  runtimeClasspath {
+    extendsFrom developmentOnly
+  }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+task genJaxb {
+    ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
+    ext.classesDir = "${buildDir}/classes/jaxb"
+    ext.schema = "src/main/resources/publications.wsdl"
+
+    outputs.dir classesDir
+
+    doLast() {
+        project.ant {
+            taskdef name: "xjc", classname: "com.sun.tools.xjc.XJCTask",
+                    classpath: configurations.jaxb.asPath
+            mkdir(dir: sourcesDir)
+            mkdir(dir: classesDir)
+
+            xjc(destdir: sourcesDir, schema: schema) {
+                arg(value: "-wsdl")
+                produces(dir: sourcesDir, includes: "**/*.java")
+            }
+
+            javac(destdir: classesDir, source: 1.8, target: 1.8, debug: true,
+                    debugLevel: "lines,vars,source", includeantruntime: "false", 
+                    classpath: configurations.jaxb.asPath) {
+                src(path: sourcesDir)
+                include(name: "**/*.java")
+                include(name: "*.java")
+            }
+
+            copy(todir: classesDir) {
+                fileset(dir: sourcesDir, erroronmissingdir: false) {
+                    exclude(name: "**/*.java")
+                }
+            }
+        }
+    }
+}
+
+bootJar {
+    baseName = 'glg203.webservice'
+    version =  '0.0'
+    from genJaxb.classesDir
+}
+
+dependencies {    
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	// Spécifiques web service :
+	// On veut créer un client... On supprime donc la partie serveur des web-services.
+    implementation ('org.springframework.boot:spring-boot-starter-web-services') {
+	    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    implementation 'org.springframework.ws:spring-ws-core'
+	jaxb("org.glassfish.jaxb:jaxb-xjc:2.3.2")
+
+    compile(files(genJaxb.classesDir).builtBy(genJaxb))
+}
+
+clean {
+    delete 'bin'
+}
+
+
+

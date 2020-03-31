@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="TempsService">
+      <implementation-class>glg203.webservice.TempsService</implementation-class>
+    </service>
+    <service name="CalculateurTer">
+      <implementation-class>glg203.webservice.CalculateurTer</implementation-class>
+    </service>
+    <service name="TelephoneWebService">
+      <implementation-class>glg203.webservice.TelephoneWebService</implementation-class>
+    </service>
+    <service name="CalculateurBis">
+      <implementation-class>glg203.webservice.CalculateurBis</implementation-class>
+    </service>
+    <service name="Calculateur">
+      <implementation-class>glg203.webservice.Calculateur</implementation-class>
+    </service>
+  </services>
+  <clients/>
+</jax-ws>

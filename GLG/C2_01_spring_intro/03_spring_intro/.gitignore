@@ -1,0 +1,11 @@
+.nb-gradle
+bin
+build
+.classpath
+.project
+.settings
+.vscode
+private
+
+
+
