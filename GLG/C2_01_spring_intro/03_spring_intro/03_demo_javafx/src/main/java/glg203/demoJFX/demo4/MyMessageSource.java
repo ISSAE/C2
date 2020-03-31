@@ -4,9 +4,9 @@ public class MyMessageSource implements IMessageSource {
 
     @Override
     public String getMessage() {
-        return "Dans cette version, plus propre, on utilise l'injection de dépendance pour injecter le bon MessageSource.\n"+
-        "Le système est encore assez bancal... la création du contrôleur supporterait mal une architecture plus complexe.\n"+
-        "Remarque: on a en fait deux systèmes d'injection de dépendances. Le nôtre (très sommaire), et celui de FXMLLoader."
+        return "Dans cette version, plus propre, on utilise l'injection de dÃ©pendance pour injecter le bon MessageSource.\n"+
+        "Le systÃ¨me est encore assez bancal... la crÃ©ation du contrÃ´leur supporterait mal une architecture plus complexe.\n"+
+        "Remarque: on a en fait deux systÃ¨mes d'injection de dÃ©pendances. Le nÃ´tre (trÃ¨s sommaire), et celui de FXMLLoader."
         ;
     }
     

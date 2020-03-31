@@ -4,8 +4,6 @@ plugins {
 
     // Apply the application plugin to add support for building an application
     id 'application'
-    
-    id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
 sourceCompatibility = 1.8
@@ -25,10 +23,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-javafx {
-    version = "14"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
-}
-
 // Define the main class for the application
-mainClassName = 'glg203.demoJFX.demo4.App4'
+mainClassName = 'glg203.demoJFX.App'

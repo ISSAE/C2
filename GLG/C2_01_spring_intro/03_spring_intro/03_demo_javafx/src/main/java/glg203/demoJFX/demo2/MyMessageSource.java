@@ -12,7 +12,7 @@ public class MyMessageSource implements IMessageSource {
     @Override
     public String getMessage() {
         return "Dans cette version, on utilise un 'faux' singleton, la classe MessageSourceRepository.\n"
-                + "Le couplage est moins apparent, mais il reste difficile de modifier le choix de l'implémentation"
+                + "Le couplage est moins apparent, mais il reste difficile de modifier le choix de l'implÃ©mentation"
                 + "de IMessageSource.";
     }
     
