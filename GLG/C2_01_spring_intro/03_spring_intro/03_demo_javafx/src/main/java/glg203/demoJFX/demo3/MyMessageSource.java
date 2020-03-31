@@ -6,9 +6,9 @@ public class MyMessageSource implements IMessageSource {
     
     @Override
     public String getMessage() {
-        return "Dans cette version, on a bricolÃ© un annuaire.\n"
+        return "Dans cette version, on a bricolé un annuaire.\n"
                 + "C'est lui qui est un singleton, maintenant, et on peut y copier les"
-                + " implÃ©mentations qu'on veut.";
+                + " implémentations qu'on veut.";
     }
     
 }
