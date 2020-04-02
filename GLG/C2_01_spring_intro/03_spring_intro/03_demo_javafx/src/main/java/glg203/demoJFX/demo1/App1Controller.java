@@ -13,7 +13,7 @@ public class App1Controller {
 
     @FXML
     public void loadMessage() {
-        // Utilisation d'un singleton... on est couplÃ© Ã  MyMessageSource.
+        // Utilisation d'un singleton... on est couplé à  MyMessageSource.
         IMessageSource messageSource= MyMessageSource.getInstance();
         messageArea.setText(messageSource.getMessage());
     }
