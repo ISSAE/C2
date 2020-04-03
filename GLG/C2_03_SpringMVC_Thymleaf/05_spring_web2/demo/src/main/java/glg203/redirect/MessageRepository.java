@@ -7,11 +7,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-@Component
+
 /**
  * Une liste (thread safe) de messages...
  * Simule par exemple une base de données...
  */
+@Component
 public class MessageRepository {
 	
 	/**
@@ -22,7 +23,8 @@ public class MessageRepository {
 	 */
 	private CopyOnWriteArrayList<Message> messages= new CopyOnWriteArrayList<>();
 
-	//@PostConstruct
+        
+	@PostConstruct
 	private void init() {
 		add("premier message");
 		add("second message");
