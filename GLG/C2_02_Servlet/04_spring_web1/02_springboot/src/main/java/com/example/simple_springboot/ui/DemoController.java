@@ -38,7 +38,7 @@ public class DemoController {
 	}
 
 
-	@GetMapping("/calcPath/{x}/plus/{y}")
+	@GetMapping("/{x}/plus/{y}")
 	@ResponseBody
 	public double calcul(@PathVariable double x, @PathVariable double y) throws IOException {
 		return x + y;
@@ -47,14 +47,14 @@ public class DemoController {
 	@GetMapping("/hello")
 	public void helloMethod(String prenom, String nom, HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("utf-8");
-		response.getWriter().println("Bonjour " + nom + " de prÃ©nom " + prenom);
+		response.getWriter().println("Bonjour " + nom + " de prénom " + prenom);
 	}
 
 
 	@GetMapping("/hello2")
 	@ResponseBody
 	public String helloMethod(String prenom, String nom) throws IOException {
-		return ("Bonjour " + nom + " de prÃ©nom " + prenom);
+		return ("Bonjour " + nom + " de prénom " + prenom);
 	}
 
 	@GetMapping(value = "/image", produces = MediaType.IMAGE_JPEG_VALUE)
