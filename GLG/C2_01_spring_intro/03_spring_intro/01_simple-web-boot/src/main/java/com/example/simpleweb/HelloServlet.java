@@ -16,7 +16,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 @WebServlet("/hello")
 public class HelloServlet extends HttpServlet{
 
-    @Autowired
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Autowired
     ICalculateurService service;
 
     @Override
