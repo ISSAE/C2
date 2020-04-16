@@ -14,21 +14,18 @@ import org.springframework.beans.factory.annotation.Autowired;
  * HelloServlet
  */
 @WebServlet("/hello")
-public class HelloServlet extends HttpServlet{
+public class HelloServlet extends HttpServlet {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
-	@Autowired
-    ICalculateurService service;
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        double val = Double.parseDouble(req.getParameter("x"));
-        resp.getWriter().println("Double de notre nombre " + service.doubler(val));
-    }
-    
-    
+	@Autowired
+	ICalculateurService service;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
+		double val = Double.parseDouble(req.getParameter("x"));
+		resp.getWriter().println("Double de notre nombre " + service.doubler(val));
+	}
+
 }

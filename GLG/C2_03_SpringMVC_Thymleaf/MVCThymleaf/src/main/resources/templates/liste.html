@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste de messages</title>
+    <style>
+        .comment {background-color: lightblue; padding: 1ex; margin: 1ex;}
+        .erreur {background-color: red; padding: 1ex; margin: 1ex;}
+    </style>
+
+</head>
+<body>
+    <div class="comment" th:text="${comment}"></div>
+
+    <p th:each="m : ${messages}"><span th:text="${m.texte}">(texte)</span> par <em th:text="${m.auteur}">..auteur...</em></p>
+
+    <a href="#" th:href="@{/redirection/form2}">Retour au formulaire</a>
+</body>
+</html>

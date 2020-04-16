@@ -1,6 +1,5 @@
 package glg203.cours03.app03DemoEvents;
 
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 

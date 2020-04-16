@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+    <style>
+        .comment {background-color: lightblue; padding: 1ex; margin: 1ex;}
+        .erreur {background-color: red; padding: 1ex; margin: 1ex;}
+
+    </style>
+</head>
+<body>
+    <div class="comment" th:text="${comment}"></div>
+
+    <div class="erreur" th:if="${erreur}" th:text="${erreur}"></div>
+
+    <form method="post">
+        Entrez votre nouveau message...<br/>
+        <textarea name="nouveauMessage" rows="6" cols="80"></textarea><br/>
+        <input type="submit"/>
+    </form>
+
+    <p th:each="m : ${messages}" th:text="${m.texte}"></p>
+</body>
+</html>

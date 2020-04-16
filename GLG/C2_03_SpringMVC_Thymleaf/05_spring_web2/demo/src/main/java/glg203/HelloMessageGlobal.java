@@ -1,8 +1,9 @@
 package glg203;
 
-import org.springframework.stereotype.Component;
-
-
+/**
+ * Une classe POJO
+ * @author Pascal Fares <pascal.fares at cofares.net>
+ */
 public class HelloMessageGlobal {
 	private String texte;
 

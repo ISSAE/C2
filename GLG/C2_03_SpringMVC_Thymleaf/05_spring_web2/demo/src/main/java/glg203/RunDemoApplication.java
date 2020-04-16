@@ -12,8 +12,9 @@ public class RunDemoApplication {
 
 
     /**
-     * Un bean pour montrer que ceux-ci sont accessibles depuis les contrôleurs.
-     * @return
+     * Un bean (par méthode) pour montrer que ceux-ci sont accessibles 
+     * depuis les contrôleurs.
+     * @return un HelloMessageGlobal
      */
     @Bean
     HelloMessageGlobal helloMessageGlobal() {

@@ -1,5 +1,9 @@
 package glg203.redirect;
 
+/**
+ * Un POJO Java Bean sans aucune annotation
+ * @author Pascal Fares <pascal.fares at cofares.net>
+ */
 public class Message {
 	private String texte = "";
 	private String auteur = "inconnu";

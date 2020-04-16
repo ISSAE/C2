@@ -2,12 +2,10 @@ package glg203.sessions;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import java.io.PrintWriter;
-import java.io.Writer;
 
 @Controller
 @SessionAttributes({"attributSimple"})

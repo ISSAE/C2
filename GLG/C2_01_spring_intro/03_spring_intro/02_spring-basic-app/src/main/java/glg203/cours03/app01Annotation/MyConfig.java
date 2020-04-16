@@ -1,7 +1,6 @@
 package glg203.cours03.app01Annotation;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
