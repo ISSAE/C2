@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+   <persistence-unit name="demo1PU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>glg203.jpa01.model.Prof</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <!-- 
+                la fin de l'URL, DB_CLOSE_DELAY=-1 sert à empêcher
+                h2 de supprimer la base de données en mémoire après fermeture de la première connexion.
+                et permet d'être plus proche de ce qui se passe avec une base de données persistante.
+            -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:profs;DB_CLOSE_DELAY=-1" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -27,7 +27,8 @@ public class MessageController {
 	@PostMapping("/form1")
 	public String postForm1(String nouveauMessage, Model model) {
 		// traitement d'erreur sommaire : monMessage ne doit pas être vide...
-		if (Strings.isEmpty(nouveauMessage)) {
+		System.out.println("............BOF.....");
+                if (Strings.isEmpty(nouveauMessage)) {
 			model.addAttribute("erreur", "le nouveau message ne doit pas être vide");
 		} else {
 			messageRepository.add(nouveauMessage);

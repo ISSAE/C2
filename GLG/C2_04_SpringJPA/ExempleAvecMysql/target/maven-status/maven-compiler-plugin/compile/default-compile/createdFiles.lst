@@ -1,0 +1,5 @@
+lb\edu\isae\voituredb\domain\Voiture.class
+lb\edu\isae\voituredb\VoitureDbApplication.class
+lb\edu\isae\voituredb\domain\VoitureRepository.class
+lb\edu\isae\voituredb\domain\Proprietaire.class
+lb\edu\isae\voituredb\domain\ProprietaireRepository.class

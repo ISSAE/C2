@@ -1,11 +1,8 @@
 package glg203.jpa.control;
 
-import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +16,7 @@ import glg203.jpa.service.ProfService;
 @Controller
 @RequestMapping("/prof/creer")
 public class CreerProfController {    
-    private ProfService profService;
+    private final ProfService profService;
 
     public CreerProfController(ProfService profService) {
         this.profService = profService;
